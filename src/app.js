@@ -15,7 +15,7 @@ const allowedOrigins = process.env.CORS_ORIGIN
   ?.split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
-
+app.set('trust proxy', 1); // 1 đại diện cho 1 lớp proxy đứng trước app
 app.disable("x-powered-by");
 app.use(cors({ origin: allowedOrigins?.length ? allowedOrigins : true }));
 app.use(express.json({ limit: "1mb" }));
